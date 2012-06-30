@@ -1,24 +1,52 @@
-<%= form_for @article do |f| %>
-	<table id="new_article_table">
-		<tr>
-			<td>
-				<%= f.text_field :writer, :placeholder => "작성자", :size => nil %>
-				<%= f.text_field :title, :placeholder => "제목", :size => nil %>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<%= f.text_area :body, :placeholder => "내용", :rows => nil, :cols => nil %>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<%= submit_tag "등록하기", :class => "btn", :id => "article_submit_button" %>
-			</td>
-		</tr>
-	</table>
-<% end %>
-</table>
+<div id="new_article_wrapper">
+	<div id="new_article_table_wrapper" style="display:none;">
+		<%= form_for @article do |f| %>
+			<table id="new_article_table">
+				<tr>
+					<td>
+						<%= f.text_field :writer, :placeholder => "작성자", :size => nil %>
+						<%= f.text_field :title, :placeholder => "제목", :size => nil %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<%= f.text_area :body, :placeholder => "내용", :rows => nil, :cols => nil %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<%= submit_tag "등록하기", :class => "btn", :id => "article_submit_button" %>
+						<button id="new_article_hide_button" class="btn">취소</button>
+					</td>
+				</tr>
+			</table>
+		<% end %>
+	</div>
+	<button id="new_article_show_button" class="btn">제안하기</button>
+</div>
 
-<table>
+<table id="articles_list" class="table">
+	<thead>
+		<tr>
+			<th class="id">id</th>
+			<th class="writer">글쓴이</th>
+			<th class="title">제목</th>
+			<th class="state">상태</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% for article in @articles %>
+			<tr state="off">
+				<td class="id"><%= article.id %></td>
+				<td class="writer"><%= article.writer %></td>
+				<td class="title">
+					<div class="article-title"><%= article.title %></div>
+					<div class="article-body" style="display:none;">
+						<%= raw article.body.gsub(/\n/, "<br />") %>
+					</div>
+				</td>
+				<td class="state"><span class="badge <%= article.state_badge %>"><%= article.state_string %></span></td>
+			</tr>
+		<% end %>
+	</tbody>
 </table>

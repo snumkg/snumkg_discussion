@@ -9,14 +9,10 @@
 # And be sure to use new-style password hashing:
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 development:
-  adapter: mysql2
+  adapter: sqlite3
   encoding: utf8
-  reconnect: false
   database: secury_snumkg_discussion
-  pool: 5
-  username: secury
-  password: dlwhdals
-  socket: /var/run/mysqld/mysqld.sock
+  timeout: 5000
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -32,11 +28,7 @@ test:
   socket: /var/run/mysqld/mysqld.sock
 
 production:
-  adapter: mysql2
+  adapter: sqlite3
   encoding: utf8
-  reconnect: false
-  database: snumkg_discussion_production
-  pool: 5
-  username: root
-  password:
-  socket: /var/run/mysqld/mysqld.sock
+  database: secury_snumkg_discussion
+  timeout: 5000

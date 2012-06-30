@@ -1,0 +1,27 @@
+<table id="articles_list" class="table">
+	<thead>
+		<tr>
+			<th class="id">id</th>
+			<th class="writer">글쓴이</th>
+			<th class="title">제목</th>
+			<th class="state">상태</th>
+			<th class="control">&nbsp;</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% for article in @articles %>
+			<tr>
+				<td class="id"><%= article.id %></td>
+				<td class="writer"><%= article.writer %></td>
+				<td class="title" state="off">
+					<div class="article-title"><%= article.title %></div>
+					<div class="article-body" style="display:none;">
+						<%= raw article.body.gsub(/\n/, "<br />") %>
+					</div>
+				</td>
+				<td class="state"><a href="#" article-id="<%= article.id %>" class="badge-button badge <%= article.state_badge %>"><%= article.state_string %></a></td>
+				<td><%= link_to "삭제하기", admin_article_path(article), :method => :delete, :confirm => "정말로 삭제하시겠습니까?" %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

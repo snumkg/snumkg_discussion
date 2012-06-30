@@ -1,0 +1,6 @@
+<h3>로그인</h3>
+
+<%= form_tag admin_auth_signin_path do %>
+	<%= password_field_tag :password %>
+	<%= submit_tag("login") %>
+<% end %>

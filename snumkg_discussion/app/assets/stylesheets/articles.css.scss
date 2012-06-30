@@ -2,10 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#article_writer {width:70px;}
+footer {text-align:center;margin-top:10px;border-top:1px solid #ddd;padding:20px;}
+#article_writer {width:85px;}
 #article_title {width:300px;}
 #article_body {width:400px;height:40px;}
 
+#new_article {margin:0;}
 #new_article_table {
   input, textarea {margin-bottom:0;}
+}
+#new_article_wrapper {margin-bottom:20px;}
+#articles_list {
+	.id {width:30px;text-align:center;}
+	.writer {width:80px;text-align:center;}
+	.state {width:90px;text-align:center;}
+	.control {width:70px;}
+	th {text-align:center;background-color:#eee;}
+	tbody tr td.title {cursor:pointer;}
 }

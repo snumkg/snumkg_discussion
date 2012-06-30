@@ -57,5 +57,14 @@ SnumkgDiscussion::Application.routes.draw do
   # match ':controller(/:action(/:id))(.:format)'
   resources :articles
 
+	get 'admin' => "admin/articles#index"
+	namespace :admin do
+		get 'articles/change_state'
+		resources :articles
+		get 'auth', :to => "auth#index"
+		post 'auth/signin'
+		get 'auth/signout'
+	end
+
   root :to => 'articles#index'
 end
