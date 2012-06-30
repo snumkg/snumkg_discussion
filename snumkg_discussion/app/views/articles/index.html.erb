@@ -1,0 +1,24 @@
+<%= form_for @article do |f| %>
+	<table id="new_article_table">
+		<tr>
+			<td>
+				<%= f.text_field :writer, :placeholder => "작성자", :size => nil %>
+				<%= f.text_field :title, :placeholder => "제목", :size => nil %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<%= f.text_area :body, :placeholder => "내용", :rows => nil, :cols => nil %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<%= submit_tag "등록하기", :class => "btn", :id => "article_submit_button" %>
+			</td>
+		</tr>
+	</table>
+<% end %>
+</table>
+
+<table>
+</table>

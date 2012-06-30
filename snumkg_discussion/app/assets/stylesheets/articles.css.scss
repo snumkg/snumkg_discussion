@@ -1,0 +1,11 @@
+// Place all the styles related to the articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#article_writer {width:70px;}
+#article_title {width:300px;}
+#article_body {width:400px;height:40px;}
+
+#new_article_table {
+  input, textarea {margin-bottom:0;}
+}
