@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
 	def index
 		@article = Article.new
+		@comment = Comment.new
 		@articles = Article.all(:order => ["state", "id desc"])
 	end
 

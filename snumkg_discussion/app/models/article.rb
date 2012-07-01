@@ -1,6 +1,7 @@
 #coding: utf-8
 class Article < ActiveRecord::Base
   attr_accessible :title, :body, :writer
+	has_many :comments
 	
 	def state_string
 		if self.state == 0

@@ -26,6 +26,7 @@
 </div>
 
 <table id="articles_list" class="table">
+	<!--
 	<thead>
 		<tr>
 			<th class="id">id</th>
@@ -34,15 +35,35 @@
 			<th class="state">상태</th>
 		</tr>
 	</thead>
+	-->
 	<tbody>
 		<% for article in @articles %>
-			<tr state="off">
+			<tr>
 				<td class="id"><%= article.id %></td>
 				<td class="writer"><%= article.writer %></td>
 				<td class="title">
-					<div class="article-title"><%= article.title %></div>
+					<div class="article-title" state="off">
+						<%= article.title %>
+						<% if article.comments.count > 0 %>
+							<span class="comment-count">[<%= article.comments.count %>]</span>
+						<% end %>
+					</div>
 					<div class="article-body" style="display:none;">
-						<%= raw article.body.gsub(/\n/, "<br />") %>
+						<div class="article-body-content"><%= raw article.body.gsub(/\n/, "<br />") %></div>
+						<div class="article-comments">
+							<% for comment in article.comments %>
+								<div><span class="label"><%= comment.writer %></span> <%= comment.body %></div>
+							<% end %>
+						</div>
+						<div class="article-comment-form-wrapper">
+							<button class="article-comment-show-button btn">댓글달기</button>
+							<%= form_for([article, Comment.new], :html => {:id => nil, :style => "display:none;"}) do |f| %>
+								<%= f.text_field :writer, :id => nil, :placeholder => "작성자", :size => nil, :class => "comment-writer" %>
+								<%= f.text_field :body, :id => nil, :placeholder => "내용", :size => nil, :class => "comment-body" %>
+								<%= submit_tag "쓰기", :class => "btn" %>
+								<button class="article-comment-hide-button btn">취소</button>
+							<% end %>
+						</div>
 					</div>
 				</td>
 				<td class="state"><span class="badge <%= article.state_badge %>"><%= article.state_string %></span></td>

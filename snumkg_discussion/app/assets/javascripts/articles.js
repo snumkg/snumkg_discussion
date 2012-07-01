@@ -12,24 +12,32 @@ $(function(){
 		return false;
 	});
 
-	$('#articles_list tbody .title').click(function(){
+	$('#articles_list tbody .article-title').click(function(){
 		var ele = $(this);
 		if (ele.attr('state') == "off"){
-			var title = ele.find('.article-title').css({
+			var title = ele.css({
 				"font-weight" : "bold",
-				"border-bottom" : "1px dotted gray",
-				"padding-bottom" : "5px",
-				"margin-bottom" : "5px",
-				"color" : "blue"
 			});
-			var body = ele.find('.article-body').slideDown();
+			var body = ele.next().slideDown();
 			ele.attr('state', 'on');
 		}
 		else {
-			var title = ele.find('.article-title').removeAttr('style');
-			var body = ele.find('.article-body').slideUp();
+			var title = ele.removeAttr('style');
+			var body = ele.next().slideUp();
 			ele.attr('state', 'off');
 		}
 		return false;
 	});
+
+	$('.article-comment-show-button').click(function(){
+		$(this).next().show();
+		$(this).hide();
+		return false;
+	});
+	$('.article-comment-hide-button').click(function(){
+		$(this).parent().prev().show();
+		$(this).parent().hide();
+		return false;
+	});
+
 });
