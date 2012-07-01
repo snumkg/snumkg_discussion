@@ -57,7 +57,7 @@
 						</div>
 						<div class="article-comment-form-wrapper">
 							<button class="article-comment-show-button btn">댓글달기</button>
-							<%= form_for([article, Comment.new], :html => {:id => nil, :style => "display:none;"}) do |f| %>
+							<%= form_for([article, Comment.new], :html => {:id => nil, :style => "display:none;", :class => "new_comment form-search"}) do |f| %>
 								<%= f.text_field :writer, :id => nil, :placeholder => "작성자", :size => nil, :class => "comment-writer" %>
 								<%= f.text_field :body, :id => nil, :placeholder => "내용", :size => nil, :class => "comment-body" %>
 								<%= submit_tag "쓰기", :class => "btn" %>
