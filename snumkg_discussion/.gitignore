@@ -8,10 +8,10 @@
 /.bundle
 
 # Ignore the default SQLite database.
-/db/*.sqlite3
+#/db/*.sqlite3
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
 
-secury_snumkg_discussion
+#secury_snumkg_discussion
